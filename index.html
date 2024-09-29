@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Aura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://i.ibb.co/4MGcW5d/Whats-App-Image-2024-09-17-at-19-09-43-c9362b77.jpg" alt="Agri Aura Logo">
+            </div>
+            <div class="website-name">
+                <h1>Agri Aura</h1>
+            </div>
+        </div>
+    </header>
+
+     <!-- Location Selection (Outside Header) -->
+     <div class="location-select">
+        <div class="location-icon-text">
+            <img src="images/location-icon.png" alt="Location Icon" class="location-icon">
+            <label for="district-select">Select a District:</label>
+            <select id="district-select" name="districts" onchange="showPlaces()">
+                <option value="" selected disabled>Select District</option>
+                <option value="chennai">Chennai</option>
+                <option value="madurai">Madurai</option>
+                <option value="coimbatore">Coimbatore</option>
+                <option value="trichy">Tiruchirappalli</option>
+                <!-- Add more districts here -->
+            </select>
+        </div>
+
+        <!-- Sub-Location based on district selection -->
+        <div class="place-select" style="margin-top: 10px;">
+            <label for="place-select">Select a Place:</label>
+            <select id="place-select" name="places">
+                <option value="" selected disabled>Select Place</option>
+                <!-- Places will be dynamically populated -->
+            </select>
+        </div>
+    </div>
+    <script>
+        function showPlaces() {
+            var district = document.getElementById("district-select").value;
+            var placeSelect = document.getElementById("place-select");
+
+            // Clear previous options
+            placeSelect.innerHTML = '<option value="" selected disabled>Select Place</option>';
+
+            var places = {
+                'chennai': ['T. Nagar', 'Adyar', 'Velachery', 'Anna Nagar'],
+                'madurai': ['Periyar', 'Thirupparankundram', 'Alagar Kovil'],
+                'coimbatore': ['Gandhipuram', 'RS Puram', 'Singanallur'],
+                'trichy': ['Srirangam', 'Thiruverumbur', 'Samayapuram']
+            };
+
+            if (places[district]) {
+                places[district].forEach(function(place) {
+                    var option = document.createElement("option");
+                    option.value = place.toLowerCase().replace(/\s+/g, '-');
+                    option.text = place;
+                    placeSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Vegetables Section -->
+        <section class="section" id="vegetables">
+            <h2>Vegetables</h2>
+            <div class="product-grid">
+                <div class="product" onclick="redirectToOrder('Carrot')">
+                    <img src="https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" alt="Vegetable 1">
+                    <p>Carrot</p>
+                </div>
+                <div class="product" onclick="redirectToOrder('Cabbage')">
+                    <img src="https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" alt="Vegetable 2">
+                    <p>Cabbage</p>
+                </div>
+            </div>
+        </section>
+        <div class="product-grid">
+              <div class="product" onclick="redirectToOrder('Corn')">
+                    <img src="https://i.ibb.co/bHZ3rjJ/d5f80d7069fbad919332ac75d11583ef.jpg" alt="corn">
+                    <p>Corn</p>
+                </div>
+              <div class="product" onclick="redirectToOrder('Tomato')">
+                    <img src="https://i.ibb.co/s563R11/TOMATO.jpg" alt="tomato">
+                    <p> Tomato </p>
+                </div>
+              </div> 
+            </section>
+        <div class="product-grid" onclick="redirectToOrder('Ridge Guard')">
+            <div class="product" >
+                    <img src="https://i.ibb.co/XYwx7pb/abd42ad83fba926a2bf5381f735a2b86.jpg" alt="Vegetable 1">
+                    <p>Ridge Guard</p>
+                </div>
+                <div class="product" onclick="redirectToOrder('Bitter Guard')">
+                    <img src="https://i.ibb.co/590RWV3/7bb01577e25a9abed7d37766a6cb1854.jpg" alt="Vegetable 2">
+                    <p>Bitter Guard</p>
+                </div>
+            </div>
+        </section>
+        <div class="product-grid">
+            <div class="product" onclick="redirectToOrder('Onion')">
+                <img src="https://i.ibb.co/Y3pH0jb/66b0506eadf1a2fddf6f5297272fff9f.jpg" alt="Vegetable 1">
+                <p>Onion</p>
+            </div>
+            <div class="product" onclick="redirectToOrder('Garlic')">
+                <img src="https://i.ibb.co/kh204p5/54f9711ddc66805fa215d956c29d1e8d.jpg" alt="Vegetable 2">
+                <p>Garlic</p>
+            </div>
+        </div>
+    </section>
+    <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Potato')" >
+            <img src="https://i.ibb.co/mcvnNWx/vegetable-1.jpg" alt="Vegetable 1">
+            <p>Potato</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Brinjal')">
+            <img src="https://i.ibb.co/KwCs5K2/438856d3d3865aa3e2be2223f5138d6e.jpg" alt="Vegetable 2">
+            <p>Brinjal</p>
+        </div>
+    </div>
+</section>
+
+<!-- Fruits Section -->
+<section class="section" id="fruits">
+    <h2>Fruits</h2>
+    <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Mango')">
+            <img src="https://i.ibb.co/64Rbcn7/mango.jpg" alt="Fruit 1">
+            <p>Mango</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Guava')">
+            <img src="https://i.ibb.co/61Kd3fj/guava.jpg" alt="Fruit 2">
+            <p>Guava</p>
+        </div>
+    </div>
+  <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Pomegranate')">
+            <img src="https://i.ibb.co/GRXGgSh/pomegranate.jpg" alt="Fruit 1">
+            <p>Pomegranate</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Pears')">
+            <img src="https://i.ibb.co/4RvdzNr/pears.jpg" alt="Fruit 2">
+            <p>Pears</p>
+        </div>
+    </div>
+   <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Water Apple')">
+            <img src="https://i.ibb.co/7GS42RT/water-apple.jpg" alt="Fruit 1">
+            <p>Water Apple</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Grapes')">
+            <img src="https://i.ibb.co/0tr5G3J/grapes.jpg" alt="Fruit 2">
+            <p>Grapes</p>
+        </div>
+    </div>
+  <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Amla')">
+            <img src="https://i.ibb.co/bPdhytS/amla.jpg" alt="Fruit 1">
+            <p>Amla</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Custard Apple')">
+            <img src="https://i.ibb.co/5WCY34g/custard-apple.jpg" alt="Fruit 2">
+            <p>Custard Apple</p>
+        </div>
+    </div>
+  <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Banana')">
+            <img src="https://i.ibb.co/hFwXCdJ/banana.jpg" alt="Fruit 1">
+            <p>Banana</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Jack Fruit')">
+            <img src="https://i.ibb.co/YDqgDL2/jack-fruit.jpg" alt="Fruit 2">
+            <p>Jack Fruit</p>
+        </div>
+    </div>
+</section>
+
+ <!-- Grains Section -->
+ <section class="section" id="grains">
+    <h2>Grains</h2>
+    <div class="product-grid">
+        <div class="product" onclick="redirectToOrder('Wheat')">
+            <img src="https://i.ibb.co/QPjFrBs/wheat.webp" alt="Grain 1">
+            <p>wheat</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Foxtail')">
+            <img src="https://i.ibb.co/0GkRPjr/foxtail.jpg" alt="Grain 2">
+            <p>foxtail</p>
+        </div>
+      <div class="product" onclick="redirectToOrder('Pearl Millet')">
+            <img src="https://i.ibb.co/T1XFZzS/pearl-millet.jpg" alt="Grain 1">
+            <p>pearl millet</p>
+        </div>
+        <div class="product" onclick="redirectToOrder('Finger Millet')">
+            <img src="https://i.ibb.co/ZLM8wbN/finger-millet.jpg" alt="Grain 2">
+            <p>finger millet</p>
+        </div>
+      <div class="product" onclick="redirectToOrder('Rice')">
+            <img src="https://i.ibb.co/gyFg2MX/rice.jpg" alt="Grain 2">
+            <p>rice</p>
+        </div><div class="product" onclick="redirectToOrder('Urad Bean')">
+            <img src="https://i.ibb.co/BVCJgfC/urad-bean.jpg" alt="Grain 2">
+            <p>urad bean</p>
+        </div>
+      <div class="product" onclick="redirectToOrder('Black Sesame')">
+            <img src="https://i.ibb.co/ch2cnw7/black-sesame.jpg" alt="Grain 2">
+            <p>Black Sesame</p>
+        </div>
+      <div class="product" onclick="redirectToOrder('Turf')">
+       <img src="https://i.ibb.co/xDF4QPH/Turf.jpg" 
+            alt="Grain 2">
+      <p> turf<p>
+        </div>
+        </div>
+</section>
+<!-- Spices Section -->
+
+<section class="section" id="spices">
+
+    <h2>Spices</h2>
+
+    <div class="product-grid">
+
+        <div class="product" onclick="redirectToOrder('Coriander Seeds')">
+
+           <img src="https://i.ibb.co/hgDSkbT/coriander-seeds.jpg"  alt="Grain 1">
+
+            <p>coriander seeds</p>
+
+        </div>
+
+        <div class="product" onclick="redirectToOrder('Fennel Seeds')">
+
+            <img src="https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" alt="Grain 2">
+
+            <p>fennel seeds</p>
+
+        </div>
+
+      <div class="product" onclick="redirectToOrder('Pepper')">
+
+            <img src="https://i.ibb.co/yssCJbc/pepper.jpg"  alt="Grain 1">
+
+            <p>pepper</p>
+
+        </div>
+
+        <div class="product" onclick="redirectToOrder('Clove')">
+
+            <img src="https://i.ibb.co/fq0QtP1/clove.jpg" alt="Grain 2" >
+
+            <p>clove</p>
+
+        </div>
+
+      <div class="product" onclick="redirectToOrder('Cinnamon')">
+
+            <img src="https://i.ibb.co/HKkJgKJ/cinnamon.jpg" alt="Grain 2">
+
+            <p>cinnamon</p>
+
+        </div>
+        <div class="product"onclick="redirectToOrder('Cardamom')">
+
+            <img src="https://i.ibb.co/xsfDRzB/cardamom.jpg" alt="Grain 2">
+
+            <p>cardamom</p>
+
+        </div>
+
+      <div class="product" onclick="redirectToOrder('Star Anise')">
+
+            <img src="https://i.ibb.co/RHv47QL/star-anise.jpg" 
+
+            alt="Grain 2">
+
+      <p> star anise<p>
+
+        </div>
+       <div class="product" onclick="redirectToOrder('Red Chilli')">
+
+       <img src="https://i.ibb.co/d7cYrkN/5f4afaa73c06370a2e0138ba9d5c4e4c.jpg" 
+
+            alt="Grain 2">
+
+      <p> Red chilli<p>
+
+        </div>
+
+        </div>
+
+</section>
+
+        <!-- Additional Sections: Fruits, Grains, etc. -->
+    </main>
+
+    <script>
+        // Function to redirect to order page
+        function redirectToOrder(productName) {
+            window.location.href = `order.html?product=${productName}`;
+        }
+    </script>
+</body>
+</html>
