@@ -1,236 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Page - Agri Aura</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Order Page - Agri Aura</h1>
-    </header>
-    <main>
-        <div class="order-container">
-            <h2 id="product-name">Product Name</h2>
-            <img id="product-image" src="" alt="Product Image">
-            <p>Amount: <span id="product-amount">$0</span></p>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" value="1" min="1" max="100">
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            <!-- Booking Options -->
-            <h3>Booking Options</h3>
-            <input type="radio" id="normal" name="booking" value="normal" checked>
-            <label for="normal">Normal Booking</label><br>
-            <input type="radio" id="prebook" name="booking" value="prebook">
-            <label for="prebook">Pre-booking</label><br>
+/* Header Styles */
+header {
+    background-color: #008000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
 
-            <!-- Address Form -->
-            <h3>Delivery Address</h3>
-            <form id="address-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required><br>
-                <label for="address">Address:</label>
-                <textarea id="address" rows="4" required></textarea><br>
-                <label for="contact">Contact Number:</label>
-                <input type="text" id="contact" required><br>
-                <button type="button" onclick="placeOrder()">Place Order</button>
-            </form>
-        </div>
-    </main>
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
 
-    <script>
-        // Get URL parameters
-        const params = new URLSearchParams(window.location.search);
-        const productName = params.get('product');
+.logo img {
+    height: 60px;
+    position: above;
+    left: 30px;
+}
 
-        // Function to update product details based on selection
-        function updateProductDetails() {
-            document.getElementById('product-name').innerText = productName;
-            // Update image and amount based on product
-            let productImage = '';
-            let productAmount = '';
+.website-name h1 {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
 
-            switch(productName) {
-                case 'Carrot':
-                    productImage = 'https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg';
-                    productAmount = '$2 per kg';
-                    break;
-                case 'Cabbage':
-                    productImage = 'https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg';
-                    productAmount = '$1.5 per kg';
-                    break;
-                case 'Corn':
-                     productImage = 'https://i.ibb.co/bHZ3rjJ/d5f80d7069fbad919332ac75d11583ef.jpg';
-                    productAmount = '$1.3 per kg';
-                    break;
-                case 'Tomato':
-                    productImage = 'https://i.ibb.co/s563R11/TOMATO.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Ridge Guard':
-                    productImage = 'https://i.ibb.co/XYwx7pb/abd42ad83fba926a2bf5381f735a2b86.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                 case 'Bitter Guard':
-                    productImage = 'https://i.ibb.co/590RWV3/7bb01577e25a9abed7d37766a6cb1854.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Onion':
-                    productImage = 'https://i.ibb.co/Y3pH0jb/66b0506eadf1a2fddf6f5297272fff9f.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Garlic':
-                    productImage = 'https://i.ibb.co/kh204p5/54f9711ddc66805fa215d956c29d1e8d.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Potato':
-                    productImage = 'https://i.ibb.co/mcvnNWx/vegetable-1.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Brinjal':
-                    productImage = 'https://i.ibb.co/KwCs5K2/438856d3d3865aa3e2be2223f5138d6e.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Mango':
-                    productImage = 'https://i.ibb.co/64Rbcn7/mango.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Guava':
-                    productImage = 'https://i.ibb.co/61Kd3fj/guava.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Pomegranate':
-                    productImage = 'https://i.ibb.co/GRXGgSh/pomegranate.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Pears':
-                    productImage = 'https://i.ibb.co/4RvdzNr/pears.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Water Apple':
-                    productImage = 'https://i.ibb.co/7GS42RT/water-apple.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Grapes':
-                    productImage = 'https://i.ibb.co/0tr5G3J/grapes.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Amla':
-                    productImage = 'https://i.ibb.co/bPdhytS/amla.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Custard Apple':
-                    productImage = 'https://i.ibb.co/5WCY34g/custard-apple.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Banana':
-                    productImage = 'https://i.ibb.co/hFwXCdJ/banana.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Jack Fruit':
-                    productImage = 'https://i.ibb.co/YDqgDL2/jack-fruit.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Wheat':
-                    productImage = 'https://i.ibb.co/QPjFrBs/wheat.webp';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Foxtail':
-                    productImage = 'https://i.ibb.co/0GkRPjr/foxtail.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Pearl Millet':
-                    productImage = 'https://i.ibb.co/T1XFZzS/pearl-millet.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Finger Millet':
-                    productImage = 'https://i.ibb.co/ZLM8wbN/finger-millet.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Rice':
-                    productImage = 'https://i.ibb.co/gyFg2MX/rice.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Urad Bean':
-                    productImage = 'https://i.ibb.co/BVCJgfC/urad-bean.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Black Sesame':
-                    productImage = 'https://i.ibb.co/ch2cnw7/black-sesame.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Turf':
-                    productImage = 'https://i.ibb.co/xDF4QPH/Turf.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Coriander Seeds':
-                    productImage = 'https://i.ibb.co/hgDSkbT/coriander-seeds.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Fennel Seeds':
-                    productImage = 'https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Pepper':
-                    productImage = 'https://i.ibb.co/yssCJbc/pepper.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Clove':
-                    productImage = 'https://i.ibb.co/fq0QtP1/clove.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Cinnamon':
-                    productImage = 'https://i.ibb.co/HKkJgKJ/cinnamon.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Cardamom':
-                    productImage = 'https://i.ibb.co/xsfDRzB/cardamom.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Star Anise':
-                    productImage = 'https://i.ibb.co/RHv47QL/star-anise.jpg';
-                    productAmount = '$1 per kg';
-                    break;
-                case 'Red Chilli':
-                    productImage = 'https://i.ibb.co/d7cYrkN/5f4afaa73c06370a2e0138ba9d5c4e4c.jpg';
-                    productAmount = '$1 per kg';
-                    break;
+/* Location Select Styles */
+.location-select {
+    margin:30px;
+}
 
+.location-icon-text {
+    display:center;
+    align-items: center;
+}
 
+.location-icon {
+    height: 40px;
+    margin-right: 50px;
+}
 
-                // Add cases for other products
-                default:
-                    productImage = '';
-                    productAmount = '';
-            }
+select {
+    padding: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+}
 
-            document.getElementById('product-image').src = productImage;
-            document.getElementById('product-amount').innerText = productAmount;
-        }
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 10px; /* Space between products */
+    margin-top: 20px;
+}
 
-        // Update product details on page load
-        updateProductDetails();
+.product {
+    text-align: center;
+    cursor: pointer;
+}
 
-        // Function to place the order
-        function placeOrder() {
-            const quantity = document.getElementById('quantity').value;
-            const bookingType = document.querySelector('input[name="booking"]:checked').value;
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const contact = document.getElementById('contact').value;
+.product img {
+    width: 65%;
+    height:65% ;
+}
 
-            if (!name || !address || !contact) {
-                alert("Please fill in all the required fields.");
-                return;
-            }
+section h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
 
-            // Simulate placing the order (in a real application, you'd send this data to the server)
-            alert(`Order Placed Successfully!\n\nProduct: ${productName}\nQuantity: ${quantity}\nBooking: ${bookingType}\nName: ${name}\nAddress: ${address}\nContact: ${contact}`);
+/* Product Text */
+.product p {
+    margin-top: 10px;
+    color: #333;
+}
 
-            // Reset form after submission
-            document.getElementById('address-form').reset();
-        }
-    </script>
-</body>
-</html>
+/* Order Page Styles */
+.order-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+h2, h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background-color: #008000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006400;
+}
