@@ -22,14 +22,24 @@
      <!-- Location Selection (Outside Header) -->
      <div class="location-select">
         <div class="location-icon-text">
-            <img src="images/location-icon.png" alt="Location Icon" class="location-icon">
+            <img src="https://i.ibb.co/0Qncm4z/location-icon.png" alt="Location Icon" class="location-icon">
             <label for="district-select">Select a District:</label>
             <select id="district-select" name="districts" onchange="showPlaces()">
                 <option value="" selected disabled>Select District</option>
                 <option value="chennai">Chennai</option>
                 <option value="madurai">Madurai</option>
                 <option value="coimbatore">Coimbatore</option>
-                <option value="trichy">Tiruchirappalli</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Namakkal">Namakkal</option>
+                <option value="Karur">Karur</option>
+                <option value="Erode">Erode</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Tirupur">Tirupur</option>
+                <option value="Salem">Salem</option>
+                <option value="Krishnagiri">Krishnagiri</option>
+                <option value="Theni">Theni</option>
+                <option value="Pudukkottai">Pudukkottai</option>
+                <option value="Dindigul">Dindigul</option>
                 <!-- Add more districts here -->
             </select>
         </div>
@@ -55,8 +65,18 @@
                 'chennai': ['T. Nagar', 'Adyar', 'Velachery', 'Anna Nagar'],
                 'madurai': ['Periyar', 'Thirupparankundram', 'Alagar Kovil'],
                 'coimbatore': ['Gandhipuram', 'RS Puram', 'Singanallur'],
-                'trichy': ['Srirangam', 'Thiruverumbur', 'Samayapuram']
-            };
+                'Tiruchirappalli': ['Srirangam', 'Thiruverumbur', 'Samayapuram'],
+                'Namakkal': ['mohanur', 'paramathi', 'erumapatti'],
+                'Karur': ['velliyanai', 'aravakurichi', 'kulithalai'],
+                'Erode': ['perundurai', 'palaya palayam', 'pungampadi'],
+                'Thanjavur': ['vallam', 'kandiyur', 'avoor'],
+                'Tirupur': ['Dharapuram', 'palladam', 'kunnathur','vellakovil'],
+                'Salem': ['Edappadi', 'yercaud', 'anthiyur'],
+                'Krishnagiri': ['Hosur', 'Periyamalai', 'nedungal'],
+                'Theni': ['cumbum', 'bodi', 'chinnamannur'],
+                'Pudukkottai': ['devakottai', 'aranthangi', 'alangudi'],
+                'Dindigul': ['palani', 'chinnalapatti', 'chempatti'],
+              };
 
             if (places[district]) {
                 places[district].forEach(function(place) {
