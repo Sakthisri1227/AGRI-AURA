@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page - Agri Aura</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Order Page - Agri Aura</h1>
+    </header>
+    <main>
+        <div class="order-container">
+            <h2 id="product-name">Product Name</h2>
+            <div class="image-container">
+                <img id="product-image" src="https://i.ibb.co/fk60Y8d/Manathakkali.jpg" alt="manathakkali">
+            </div>
+            <p>Amount: <span id="product-amount">$0</span></p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1" max="100">
+
+            <!-- Booking Options -->
+            <h3>Booking Options</h3>
+            <div class="booking-options">
+                <input type="radio" id="normal" name="booking" value="normal" checked>
+                <label for="normal">Normal Booking</label><br>
+                <input type="radio" id="prebook" name="booking" value="prebook">
+                <label for="prebook">Pre-booking</label><br>
+            </div>
+
+            <!-- Address Form -->
+            <h3>Delivery Address</h3>
+            <form id="address-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required><br>
+                <label for="address">Address:</label>
+                <textarea id="address" rows="4" placeholder="Enter your delivery address" required></textarea><br>
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" placeholder="Enter contact number" required pattern="^\d{10}$" title="Please enter a 10-digit phone number"><br>
+                <button type="button" class="order-btn" onclick="placeOrder()">Place Order</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
